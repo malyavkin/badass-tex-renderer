@@ -1,0 +1,82 @@
+<font width = "8" height = "8">
+    <char code = "A" width = "1" baseline = "0" tiles = "0,0"/>
+    <char code = "B" width = "1" baseline = "0" tiles = "0,1"/>
+    <char code = "C" width = "1" baseline = "0" tiles = "0,2"/>
+    <char code = "D" width = "1" baseline = "0" tiles = "0,3"/>
+    <char code = "E" width = "1" baseline = "0" tiles = "0,4"/>
+    <char code = "F" width = "1" baseline = "0" tiles = "0,5"/>
+    <char code = "G" width = "1" baseline = "0" tiles = "0,6"/>
+    <char code = "H" width = "1" baseline = "0" tiles = "0,7"/>
+    <char code = "I" width = "1" baseline = "0" tiles = "0,8"/>
+    <char code = "J" width = "1" baseline = "0" tiles = "0,9"/>
+    <char code = "K" width = "1" baseline = "0" tiles = "0,10"/>
+    <char code = "L" width = "1" baseline = "0" tiles = "0,11"/>
+    <char code = "M" width = "1" baseline = "0" tiles = "0,12"/>
+    <char code = "N" width = "1" baseline = "0" tiles = "0,13"/>
+    <char code = "O" width = "1" baseline = "0" tiles = "0,14"/>
+    <char code = "P" width = "1" baseline = "0" tiles = "0,15"/>
+    <char code = "Q" width = "1" baseline = "0" tiles = "0,16"/>
+    <char code = "R" width = "1" baseline = "0" tiles = "0,17"/>
+    <char code = "S" width = "1" baseline = "0" tiles = "0,18"/>
+    <char code = "T" width = "1" baseline = "0" tiles = "0,19"/>
+    <char code = "U" width = "1" baseline = "0" tiles = "0,20"/>
+    <char code = "V" width = "1" baseline = "0" tiles = "0,21"/>
+    <char code = "W" width = "1" baseline = "0" tiles = "0,22"/>
+    <char code = "X" width = "1" baseline = "0" tiles = "0,23"/>
+    <char code = "Y" width = "1" baseline = "0" tiles = "0,24"/>
+    <char code = "Z" width = "1" baseline = "0" tiles = "0,25"/>
+    <char code = " " width = "1" baseline = "0" tiles = "0,26"/>
+    <char code = "!" width = "1" baseline = "0" tiles = "5,2"/>
+    <char code = "0" width = "1" baseline = "0" tiles = "4,0"/>
+    <char code = "1" width = "1" baseline = "0" tiles = "4,1"/>
+    <char code = "2" width = "1" baseline = "0" tiles = "4,2"/>
+    <char code = "3" width = "1" baseline = "0" tiles = "4,3"/>
+    <char code = "4" width = "1" baseline = "0" tiles = "4,4"/>
+    <char code = "5" width = "1" baseline = "0" tiles = "4,5"/>
+    <char code = "6" width = "1" baseline = "0" tiles = "4,6"/>
+    <char code = "7" width = "1" baseline = "0" tiles = "4,7"/>
+    <char code = "8" width = "1" baseline = "0" tiles = "4,8"/>
+    <char code = "9" width = "1" baseline = "0" tiles = "4,9"/>
+    <char code = "+" width = "1" baseline = "0" tiles = "4,10"/>
+    <char code = "-" width = "1" baseline = "0" tiles = "4,11"/>
+    <char code = "×" width = "1" baseline = "0" tiles = "4,12"/>
+    
+	<char code = "=" width = "1" baseline = "0" tiles = "4,14"/>
+	<char code = "*" width = "1" baseline = "0" tiles = "5,5"/>
+	<char code = "fraction_bar" width = "1" baseline = "0" tiles = "4,27"/>
+    
+    
+    <char code = "Sigma" width = "2" baseline = "1" tiles = "11,3;11,4;12,3;12,4;13,3;13,4"/>
+    <char code = "err" width = "1" baseline = "0" tiles = "23,35"/>
+	
+    <map code ="a" to = "A"/>
+    <map code ="b" to = "B"/>
+    <map code ="c" to = "C"/>
+    <map code ="d" to = "D"/>
+    <map code ="e" to = "E"/>
+    <map code ="f" to = "F"/>
+    <map code ="g" to = "G"/>
+    <map code ="h" to = "H"/>
+    <map code ="i" to = "I"/>
+    <map code ="j" to = "J"/>
+    <map code ="k" to = "K"/>
+    <map code ="l" to = "L"/>
+    <map code ="m" to = "M"/>
+    <map code ="n" to = "N"/>
+    <map code ="o" to = "O"/>
+    <map code ="p" to = "P"/>
+    <map code ="q" to = "Q"/>
+    <map code ="r" to = "R"/>
+    <map code ="s" to = "S"/>
+    <map code ="t" to = "T"/>
+    <map code ="u" to = "U"/>
+    <map code ="v" to = "V"/>
+    <map code ="w" to = "W"/>
+    <map code ="x" to = "X"/>
+    <map code ="y" to = "Y"/>
+    <map code ="z" to = "Z"/>
+
+
+
+
+</font>	

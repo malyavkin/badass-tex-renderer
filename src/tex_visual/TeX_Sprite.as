@@ -10,10 +10,8 @@ package tex_visual {
 	public class TeX_Sprite {
 		public var position:IntPoint; // position relative to parent
 		public var rect:Rectangle; // sector of pixels
-		private var _baseline:int
-		public function TeX_Sprite(rect:Rectangle, pos:IntPoint, baseline:int=0) {
-			_baseline = baseline;
-			this.position = pos;
+		public function TeX_Sprite(rect:Rectangle, pos:IntPoint = null) {
+			this.position = pos?pos:new IntPoint();
 			this.rect = rect;
 		}
 		public function get width():uint {

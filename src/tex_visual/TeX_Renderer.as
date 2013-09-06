@@ -76,9 +76,9 @@ package tex_visual {
 			return mergeGroup(sprites)
 		}
 		/**
-		 * 
-		 * @param	token
-		 * @return
+		 * Renders the token
+		 * @param	token token to be rendered 
+		 * @return sprite
 		 */
 		public function render(token:TeX_Token):TeX_Sprite {
 			var result:TeX_Sprite
@@ -97,6 +97,11 @@ package tex_visual {
 			
 			return result;
 		}
+		/**
+		 * Use this for batch token rendering 
+		 * @param	tokens Vector of tokens to be rendered
+		 * @return vector of rendered sprites 
+		 */
 		public function renderGroup(tokens:Vector.<TeX_Token>):Vector.<TeX_Sprite> {
 			var res:Vector.<TeX_Sprite> = new Vector.<TeX_Sprite>
 			for each (var tk: TeX_Token in tokens) {
@@ -186,17 +191,19 @@ package tex_visual {
 			return new TeX_Sprite(rs.getPicture(), group_down)
 		}
 		
-		private function renderChar(c:TeX_Character):TeX_Sprite {
-			var bd:BitmapData = new BitmapData(c.width * font.tileWidth, c.tilesHeight * font.tileHeight);
+		private function renderChar(c:TeX_Character):Vector.<TeX_Sprite> {
 			var tiles:Array = c.tiles.slice()
+			var res:Vector.<TeX_Sprite> = new Vector.<TeX_Sprite>
 			for (var i:int = 0; i < c.tilesHeight; i++) {
 				for (var j:int = 0; j < c.width; j++) {
 					//[row,column]
 					var coords:Array = String(tiles.shift()).split(",")
-					bd.copyPixels(font.font, new Rectangle(coords[1] * font.tileWidth, coords[0] * font.tileHeight, font.tileWidth, font.tileHeight), new Point(j * font.tileWidth, i * font.tileHeight));
+					res.push(new TeX_Sprite(new Rectangle(coords[1] * font.tileWidth, coords[0] * font.tileHeight, font.tileWidth, font.tileHeight), new Point(j * font.tileWidth, i * font.tileHeight)));
+					
+					
 				}
 			}
-			return new TeX_Sprite(bd,c.beneathBaseline*font.tileWidth)
+			return res
 		}
 	
 	}

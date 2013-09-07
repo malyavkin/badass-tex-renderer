@@ -1,5 +1,7 @@
 package tex_visual {
 	import com.am_devcorp.algo.graphics.UIntPoint;
+	import com.am_devcorp.algo.processing.TeX.TeX_PlaintextToken;
+	import com.am_devcorp.algo.processing.TeX.TeX_Token;
 	import flash.geom.Rectangle;
 	import flash.geom.Point;
 	/**
@@ -12,8 +14,40 @@ package tex_visual {
 			font = fnt
 		}
 		
+		// MERGE
 		
 		
+		/**
+		 * Actually draws
+		 * @param	Vector
+		 */
+		public function mergeInLine(Vector):void {
+			
+		}
+		
+		
+		
+		// Formatters
+		
+		public function formPlainText(token:TeX_Token):Vector.<TeX_Sprite> {
+			var text_to_render:String = (token as TeX_PlaintextToken).str
+			var arr:Array = text_to_render.split("").map(parse).map(form)
+			/**
+			 * Wraps TeX_TiledFont.retrieveDataForChar() for using in Array.map()
+			 */
+			function parse(elem:String, a:*,b:*):TeX_Character {
+				return font.retrieveDataForChar(elem)
+			}
+			/**
+			 * Wraps formChar() for using in Array.map()
+			 */
+			function form(char:TeX_Character, a:*, b:*):TeX_Sprite {
+				return formChar(char)
+			}
+			var vec:Vector.<TeX_Sprite> = new Vector.<TeX_Sprite>
+			vec.push.apply(null, arr) // transforming array to Vector.<TeX_Sprite> 
+			return vec
+		}
 		
 		public function formChar(c:TeX_Character):TeX_Sprite {
 			var tiles:Array = c.tiles.slice()

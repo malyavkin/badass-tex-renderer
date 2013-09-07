@@ -191,9 +191,9 @@ package tex_visual {
 			return new TeX_Sprite(rs.getPicture(), group_down)
 		}
 		
-		private function renderChar(c:TeX_Character):Vector.<TeX_Sprite> {
+		private function renderChar(c:TeX_Character):TeX_Sprite {
 			var tiles:Array = c.tiles.slice()
-			var res:Vector.<TeX_Sprite> = new Vector.<TeX_Sprite>
+			var res:TeX_Sprite = new TeX_Sprite(TeX_Sprite.TYPE_CONTAINER)
 			for (var i:int = 0; i < c.tilesHeight; i++) {
 				for (var j:int = 0; j < c.width; j++) {
 					//[row,column]

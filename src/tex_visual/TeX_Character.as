@@ -10,13 +10,17 @@ package tex_visual {
 		private var _baseline:int = 0;
 		
 		/**
-		 * Determines how many tiles below the baseline we should lower the character
+		 * Baseline determines how many pixels below the baseline we should lower the character
 		 * baseline = 0  baseline = 1
-		 *
+		 * above    = 3  above    = 2 
+		 * beneath  = 0  beneath  = 1
+		 * 
 		 *   OO
 		 *   OO            OO
 		 * __OO_________ __OO_______
 		 *                 OO
+		 * Above baseline -- position of top border relative to baseline
+		 * Beneath baseline -- position of bottom border relative to baseline
 		 */
 		
 		public function get tilesHeight():uint {

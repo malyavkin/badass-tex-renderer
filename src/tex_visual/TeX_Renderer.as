@@ -24,7 +24,8 @@ package tex_visual {
 			renderSettings[TeX_TokenType.ROOT] = renderRoot
 			renderSettings[TeX_TokenType.PLAIN] = renderPlainText
 			renderSettings[TeX_TokenType.SUM] = renderSum 
-			renderSettings[TeX_TokenType.FRACTION] = renderFrac 
+			renderSettings[TeX_TokenType.FRACTION] = renderFrac
+			trace.apply(null,renderSettings)
 		}
 		
 		private function renderFrac(token:TeX_Token):TeX_Sprite {

@@ -10,10 +10,11 @@ package {
 	 * ...
 	 * @author Malyavkin Alexey <a@malyavk.in>
 	 */
+	[SWF(width=480,height=320,frameRate="60",backgroundColor="#cccccc")]
 	public class test extends Sprite {
 		
 		public function test() {
-			new ResourceProvider
+			new ResourceProvider();
 			var fnt:TeX_TiledFont = new TeX_TiledFont(ResourceProvider.font, ResourceProvider.mapping)
 			var renderer:TeX_Renderer2 = new TeX_Renderer2(fnt)
 			
@@ -23,7 +24,7 @@ package {
 			this.scaleY = 2
 			
 			addChild(bm)
-			
+			trace(renderer)
 			
 			
 		

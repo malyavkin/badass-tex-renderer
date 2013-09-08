@@ -12,13 +12,10 @@ package tex_visual {
 		
 		public var position:UIntPoint; // position relative to parent
 		
-		
 		public function TeX_Sprite(x:uint,y:uint,width:uint,height:uint, position:UIntPoint) {
 			super(x,y,width,height)
 			this.position = position
 		}
-		
-		
 		
 		override public function toString():String {
 			return super.toString()+ "/ TeX Sprite @"+this.position

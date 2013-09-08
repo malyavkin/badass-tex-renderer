@@ -3,6 +3,7 @@ package tex_visual {
 	import com.am_devcorp.algo.graphics.UIntPoint;
 	import com.am_devcorp.algo.processing.TeX.TeX_PlaintextToken;
 	import com.am_devcorp.algo.processing.TeX.TeX_Token;
+	import com.am_devcorp.algo.processing.TeX.TeX_TokenType;
 	import flash.display.BitmapData;
 	import flash.geom.Rectangle;
 	import flash.geom.Point;
@@ -15,11 +16,26 @@ package tex_visual {
 	 */
 	public class TeX_Renderer2 {
 		private var font:TeX_TiledFont
+		private var renderSettings:Object;
 		public function TeX_Renderer2(fnt:TeX_TiledFont) {
 			font = fnt
+			renderSettings = new Object()
+			//renderSettings[TeX_TokenType.ROOT] = formRoot
+			renderSettings[TeX_TokenType.PLAIN] = formPlainText
+			//renderSettings[TeX_TokenType.SUM] = formSum 
+			//renderSettings[TeX_TokenType.FRACTION] = formFrac 
 		}
+		public function toString():String {
+			var s:String = ""
+			for each (var i:String in renderSettings) {
+				s+=i+" "
+			}
+			
+			return "tiles: "+font.tileFormatInt+" supported tokens: "+s
+		}
+		
 		public function rasterize(group:TeX_SpriteContainer):BitmapData {
-			var bd:BitmapData = new BitmapData(group.width, group.height);
+			var bd:BitmapData = new BitmapData(group.width, group.height,true,0);
 			bd.lock()
 			for each (var piece:TeX_Sprite in group.pieces) {
 				bd.copyPixels(font.font,piece,piece.position.as_point,null,null,true)
@@ -31,15 +47,6 @@ package tex_visual {
 		
 		
 		// MERGE
-		/**
-		 * 
-		 * @param	Vector
-		 *  Character:
-		 *
-		 *    OO ↑ up=2
-		 *  __OO_________
-		 *    OO ↓ down=1 ( =baseline )
-		 */
 		private function mergeInLine(vec:Vector.<TeX_SpriteContainer>):TeX_SpriteContainer {
 			var global_above_baseline:int// отступ сверху до baseline 
 			var global_height:uint
@@ -64,34 +71,60 @@ package tex_visual {
 					}
 				}
 				hcaret = new_hcaret
-				
 			}
 			return new TeX_SpriteContainer(res, global_height - global_above_baseline);
-			
 		}
 		
-		
-		
 		// Formatters
+		/**
+		 * Selects proper function to form a container
+		 * @param	token
+		 * @return
+		 */
+		public function form(token:TeX_Token):TeX_SpriteContainer {
+			var result:TeX_SpriteContainer
+			try {
+				var settings:Function = renderSettings[token.type];
+				if (settings!=null) {
+					result = settings(token)
+				}else {
+					trace("missing render settings for", token.type)
+					result = formChar(font.retrieveDataForChar("err"))
+				}
+				
+			} catch (err:Error){
+				result = formChar(font.retrieveDataForChar("err"))
+			}
+			
+			return result;
+
+		}
+		/**
+		 * Use this for batch token forming
+		 * @param	tokens Vector of tokens to be rendered
+		 * @return vector of formed tokens
+		 */
+		public function batchForm(tokens:Vector.<TeX_Token>):Vector.<TeX_SpriteContainer> {
+			var res:Vector.<TeX_SpriteContainer> = new Vector.<TeX_SpriteContainer>
+			for each (var tk: TeX_Token in tokens) {
+				res.push(form(tk))
+			}
+			return res
+		}
 		
 		public function formPlainText(token:TeX_Token):TeX_SpriteContainer {
 			var text_to_render:String = (token as TeX_PlaintextToken).str
-			var arr:Array = text_to_render.split("").map(parse).map(form)
-			/**
-			 * Wraps TeX_TiledFont.retrieveDataForChar() for using in Array.map()
-			 */
+			var arr:Array = text_to_render.split("").map(parse).map(formc)
+			///Wraps TeX_TiledFont.retrieveDataForChar() for using in Array.map()
 			function parse(elem:String, a:*,b:*):TeX_Character {
 				return font.retrieveDataForChar(elem)
 			}
-			/**
-			 * Wraps formChar() for using in Array.map()
-			 */
-			function form(char:TeX_Character, a:*, b:*):TeX_SpriteContainer {
+			///Wraps formChar() for using in Array.map()
+			function formc(char:TeX_Character, a:*, b:*):TeX_SpriteContainer {
 				return formChar(char)
 			}
 			var vec:Vector.<TeX_SpriteContainer> = new Vector.<TeX_SpriteContainer>
 			vec.push.apply(null, arr)// transforming array to Vector.<TeX_Sprite> 
-			
 			return mergeInLine(vec)
 		}
 		
@@ -106,15 +139,7 @@ package tex_visual {
 					pcs.push(sp);
 				}
 			}
-			
-			
-			for each (var xxx:TeX_Sprite in pcs) {
-				trace(xxx.position, xxx.width)
-			}
-			trace("---")
 			return new TeX_SpriteContainer(pcs,c.beneathBaseline*font.tileHeight)
 		}
-		
 	}
-
 }

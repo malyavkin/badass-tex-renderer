@@ -20,7 +20,7 @@ package {
 			var fnt:TeX_TiledFont = new TeX_TiledFont(ResourceProvider.font, ResourceProvider.mapping)
 			var renderer:TeX_Renderer2 = new TeX_Renderer2(fnt)
 			
-			var tk:TeX_Token = TeX.Parse("hello world\\sum{12345}{2}")
+			var tk:TeX_Token = TeX.Parse("hello world\\frac{1}{2}")
 			var tc:TeX_SpriteContainer = renderer.form(tk)
 			var bm:Bitmap = new Bitmap(renderer.rasterize(tc))
 			this.scaleX = 2

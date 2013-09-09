@@ -11,7 +11,7 @@ package tex_visual {
 			this.baseline = baseline
 			this.pieces = vec
 		}
-		
+
 		public function get aboveBaseline():int {
 			return height-baseline
 		}

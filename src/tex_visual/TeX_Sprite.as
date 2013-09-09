@@ -16,7 +16,9 @@ package tex_visual {
 			super(x,y,width,height)
 			this.position = position
 		}
-		
+		public function copy():TeX_Sprite {
+			return new TeX_Sprite(x,y,width,height,position.copy)
+		}
 		override public function toString():String {
 			return super.toString()+ "/ TeX Sprite @"+this.position
 		}

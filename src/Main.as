@@ -10,6 +10,7 @@ package {
 	import com.am_devcorp.algo.graphics.IntPoint;
 	import com.am_devcorp.algo.system.Props;
 	import com.am_devcorp.algo.system.LightError
+	import tex_visual.TeX_SpriteContainer;
 	//current project
 	import tex_visual.TeX_TiledFont;
 	import tex_visual.TeX_Renderer;
@@ -58,7 +59,6 @@ package {
 		///test subjects
 		private var font:TeX_TiledFont
 		private var tex_renderer:TeX_Renderer;
-		private var tex_parser:TeX;
 		
 		public function Main() {
 			now = getTimer()
@@ -96,7 +96,7 @@ package {
 			
 			font = new TeX_TiledFont(ResourceProvider.font, ResourceProvider.mapping)
 			tex_renderer = new TeX_Renderer(font)
-			tex_parser = new TeX()
+			
 			
 			trace("0:tex init:" + (getTimer() - now) + "ms")
 			now = getTimer()
@@ -115,10 +115,9 @@ package {
 		}
 		
 		private function onTextFieldChange(e:Event = null):void {
-			var token:TeX_Token
-			token = tex_parser.Parse(textfield.text)
+			var token:TeX_Token = TeX.Parse(textfield.text);
 			//trace(token)
-			raster.loadPicture(tex_renderer.render(token).pixels)
+			raster.loadPicture(tex_renderer.rasterize(tex_renderer.form(token)))
 		}
 		
 		public function onEnterFrame(e:Event):void {

@@ -1,33 +1,23 @@
 package {
 	// my libs
-	import com.am_devcorp.algo.codec.BMP.BMPCodec;
-	import com.am_devcorp.algo.game.control.FocusKeeper;
-	import com.am_devcorp.algo.game.control.Input;
 	import com.am_devcorp.algo.graphics.render.rasterstage.*;
-	import com.am_devcorp.algo.processing.TeX.TeX_PlaintextToken;
-	import com.am_devcorp.algo.processing.TeX.TeX_Token;
 	import com.am_devcorp.algo.processing.TeX.TeX;
-	import com.am_devcorp.algo.graphics.IntPoint;
+	import com.am_devcorp.algo.processing.TeX.TeX_Token;
 	import com.am_devcorp.algo.system.Props;
-	import com.am_devcorp.algo.system.LightError
-	import tex_visual.TeX_SpriteContainer;
-	//current project
-	import tex_visual.TeX_TiledFont;
-	import tex_visual.TeX_Renderer;
-	// SDK
+	import flash.display.BitmapData;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.TimerEvent;
-	import flash.filesystem.File;
-	import flash.filesystem.FileStream;
 	import flash.geom.Point;
 	import flash.system.Capabilities;
 	import flash.text.TextField;
+	import flash.text.TextFieldType;
 	import flash.utils.getTimer;
 	import flash.utils.Timer;
-	import flash.filesystem.FileMode;
-	import flash.display.BitmapData;
-	import flash.text.TextFieldType;
+	import tex_common.*;
+	import tex_visual_v1.TeX_Renderer;
+	//current project
+	// SDK
 	/**
 	 * ...
 	 * @author Alexey Malyavkin <a@malyavk.in>
@@ -116,8 +106,12 @@ package {
 		
 		private function onTextFieldChange(e:Event = null):void {
 			var token:TeX_Token = TeX.Parse(textfield.text);
-			//trace(token)
-			raster.loadPicture(tex_renderer.rasterize(tex_renderer.form(token)))
+			var product:BitmapData
+			//v1
+			product = tex_renderer.render(token).pixels
+			//v2
+			//product = tex_renderer.rasterize(tex_renderer.form(token))
+			raster.loadPicture(product)
 		}
 		
 		public function onEnterFrame(e:Event):void {

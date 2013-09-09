@@ -1,4 +1,4 @@
-package tex_visual {
+package tex_common {
 	import com.am_devcorp.algo.graphics.IntPoint;
     import flash.display.BitmapData;
     import flash.geom.Point;

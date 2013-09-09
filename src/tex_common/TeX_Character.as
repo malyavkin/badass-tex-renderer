@@ -1,4 +1,4 @@
-package tex_visual {
+package tex_common {
 	
 	/**
 	 * Contains information about character: tiles, positioning and so on

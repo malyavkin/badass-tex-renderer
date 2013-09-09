@@ -1,4 +1,4 @@
-package tex_visual {
+package tex_visual_v2 {
 	import com.am_devcorp.mathtricks.mathtricks
 	/**
 	 * ...

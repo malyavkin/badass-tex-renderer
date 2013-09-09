@@ -1,4 +1,4 @@
-package tex_visual {
+package tex_visual_v2 {
 	import com.am_devcorp.algo.graphics.UIntPoint;
 	import com.am_devcorp.algo.graphics.render.rasterstage.RasterSprite;
 	import flash.display.BitmapData;

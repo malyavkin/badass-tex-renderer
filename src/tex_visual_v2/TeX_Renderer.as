@@ -1,4 +1,4 @@
-package tex_visual {
+package tex_visual_v2 {
 	import com.am_devcorp.algo.graphics.UIntPoint;
 	import com.am_devcorp.algo.processing.TeX.TeX_PlaintextToken;
 	import com.am_devcorp.algo.processing.TeX.TeX_Token;
@@ -6,6 +6,7 @@ package tex_visual {
 	import com.am_devcorp.mathtricks.mathtricks;
 	import flash.display.BitmapData;
 	import flash.text.TextFormatAlign;
+	import tex_common.*
 	/**
 	 * TeX_Sprite -- 1 piece(tile) of a character
 	 * TeX_SpriteContainer -- 1 character, consists of Vector.<TeX_Sprite>

@@ -15,7 +15,7 @@ package {
 	import flash.utils.getTimer;
 	import flash.utils.Timer;
 	import tex_common.*;
-	import tex_visual_v1.TeX_Renderer;
+	import tex_visual_v2.TeX_Renderer;
 	//current project
 	// SDK
 	/**
@@ -75,7 +75,7 @@ package {
 			textfield.y = HEIGHT - textfield.height - 3
 			textfield.border = true
 			textfield.addEventListener(Event.CHANGE, onTextFieldChange)
-			textfield.text = "\\sum{0}{5} \\frac{x}{2} = \\frac{15}{2} = 7\\frac{1}{2}"; //tnx captain obvious
+			textfield.text = "\\sum{0}{5} \\frac{\\sum{0}{5}x}{2} = \\frac{15}{2} = 7\\frac{1}{2}"; //tnx captain obvious
 
 			addChild(gridscreen);
 			addChild(screen);
@@ -105,13 +105,17 @@ package {
 		}
 		
 		private function onTextFieldChange(e:Event = null):void {
+			now = getTimer()
 			var token:TeX_Token = TeX.Parse(textfield.text);
 			var product:BitmapData
+			for (var i:int = 0; i < 1000; i++) {
 			//v1
-			product = tex_renderer.render(token).pixels
+				//product = tex_renderer.render(token).pixels
 			//v2
-			//product = tex_renderer.rasterize(tex_renderer.form(token))
+				product = tex_renderer.rasterize(tex_renderer.form(token))
+			}
 			raster.loadPicture(product)
+			trace((getTimer()- now)/1000, "ms")
 		}
 		
 		public function onEnterFrame(e:Event):void {
